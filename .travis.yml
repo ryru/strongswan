@@ -46,7 +46,7 @@ jobs:
           - $HOME/.sonar-cache
       addons:
         sonarcloud:
-          organization: "strongswan"
+          organization: "ryru"
     - env: TEST=lgtm
       if: type = push AND env(LGTM_TOKEN) IS present
       git:
