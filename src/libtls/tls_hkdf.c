@@ -86,7 +86,7 @@ static char *hkdf_labels[] = {
 	"ext binder",
 	"res binder",
 	"c e traffic",
-	"e expt master",
+	"e exp master",
 	"c hs traffic",
 	"s hs traffic",
 	"c ap traffic",
