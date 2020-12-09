@@ -1724,8 +1724,6 @@ static status_t send_finished(private_tls_peer_t *this,
 		}
 
 		writer->write_data(writer, chunk_from_thing(buf));
-		this->crypto->append_handshake(this->crypto, *type,
-									   writer->get_buf(writer));
 	}
 	else
 	{
@@ -1743,6 +1741,7 @@ static status_t send_finished(private_tls_peer_t *this,
 	}
 
 	this->state = STATE_FINISHED_SENT;
+	this->crypto->append_handshake(this->crypto, *type, writer->get_buf(writer));
 	return NEED_MORE;
 }
 
