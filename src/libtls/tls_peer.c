@@ -402,7 +402,12 @@ static status_t process_server_hello(private_tls_peer_t *this,
 
 		if (key_share.len &&
 			key_type != TLS_CURVE25519 &&
-			key_type != TLS_CURVE448)
+			key_type != TLS_CURVE448 &&
+			key_type != TLS_FFDHE2048 &&
+			key_type != TLS_FFDHE3072 &&
+			key_type != TLS_FFDHE4096 &&
+			key_type != TLS_FFDHE6144 &&
+			key_type != TLS_FFDHE8192)
 		{	/* classic format (see RFC 8446, section 4.2.8.2) */
 			if (key_share.ptr[0] != TLS_ANSI_UNCOMPRESSED)
 			{

@@ -634,7 +634,12 @@ static status_t process_client_hello(private_tls_server_t *this,
 		{
 			if (peer.key_share.len &&
 				peer.curve != TLS_CURVE25519 &&
-				peer.curve != TLS_CURVE448)
+				peer.curve != TLS_CURVE448 &&
+				peer.curve != TLS_FFDHE2048 &&
+				peer.curve != TLS_FFDHE3072 &&
+				peer.curve != TLS_FFDHE4096 &&
+				peer.curve != TLS_FFDHE6144 &&
+				peer.curve != TLS_FFDHE8192)
 			{	/* classic format (see RFC 8446, section 4.2.8.2) */
 				if (peer.key_share.ptr[0] != TLS_ANSI_UNCOMPRESSED)
 				{
@@ -1143,7 +1148,12 @@ bool tls_write_key_share(bio_writer_t **key_share, diffie_hellman_t *dh)
 	*key_share = writer = bio_writer_create(pub.len + 7);
 	writer->write_uint16(writer, curve);
 	if (curve == TLS_CURVE25519 ||
-		curve == TLS_CURVE448)
+		curve == TLS_CURVE448 ||
+		curve == TLS_FFDHE2048 ||
+		curve == TLS_FFDHE3072 ||
+		curve == TLS_FFDHE4096 ||
+		curve == TLS_FFDHE6144 ||
+		curve == TLS_FFDHE8192)
 	{
 		writer->write_data16(writer, pub);
 	}

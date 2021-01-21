@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2020 Tobias Brunner
- * Copyright (C) 2020 Pascal Knecht
+ * Copyright (C) 2020-2021 Pascal Knecht
  * Copyright (C) 2020 Méline Sieber
  * HSR Hochschule fuer Technik Rapperswil
  *
@@ -1546,13 +1546,18 @@ static struct {
 	diffie_hellman_group_t group;
 	tls_named_group_t curve;
 } curves[] = {
-	{ ECP_256_BIT, TLS_SECP256R1},
-	{ ECP_384_BIT, TLS_SECP384R1},
-	{ ECP_521_BIT, TLS_SECP521R1},
-	{ ECP_224_BIT, TLS_SECP224R1},
-	{ ECP_192_BIT, TLS_SECP192R1},
-	{ CURVE_25519, TLS_CURVE25519},
-	{ CURVE_448,   TLS_CURVE448},
+	{ ECP_256_BIT,   TLS_SECP256R1 },
+	{ ECP_384_BIT,   TLS_SECP384R1 },
+	{ ECP_521_BIT,   TLS_SECP521R1 },
+	{ ECP_224_BIT,   TLS_SECP224R1 },
+	{ ECP_192_BIT,   TLS_SECP192R1 },
+	{ CURVE_25519,   TLS_CURVE25519 },
+	{ CURVE_448,     TLS_CURVE448 },
+	{ MODP_2048_BIT, TLS_FFDHE2048 },
+	{ MODP_3072_BIT, TLS_FFDHE3072 },
+	{ MODP_4096_BIT, TLS_FFDHE4096 },
+	{ MODP_6144_BIT, TLS_FFDHE6144 },
+	{ MODP_8192_BIT, TLS_FFDHE8192 },
 };
 
 CALLBACK(group_filter, bool,
